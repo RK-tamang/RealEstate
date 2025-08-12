@@ -1,12 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { HeartIcon, MapPinIcon, HomeIcon, BuildingOffice2Icon, Squares2X2Icon } from '@heroicons/react/24/outline';
+import React from "react";
+import { Link } from "react-router-dom";
+import {
+  HeartIcon,
+  MapPinIcon,
+  HomeIcon,
+  BuildingOffice2Icon,
+  Squares2X2Icon,
+} from "@heroicons/react/24/outline";
 
 const PropertyCard = ({ property }) => {
   const formatPrice = (price) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
       minimumFractionDigits: 0,
     }).format(price);
   };
@@ -24,24 +30,23 @@ const PropertyCard = ({ property }) => {
             {property.type}
           </span>
         </div>
-        <button className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-colors">
-          <HeartIcon className="h-5 w-5 text-gray-600 hover:text-red-500 transition-colors" />
-        </button>
         <div className="absolute bottom-4 right-4">
           <span className="bg-white/90 backdrop-blur-sm text-gray-900 px-3 py-1 rounded-full text-sm font-bold">
             {formatPrice(property.price)}
           </span>
         </div>
       </div>
-      
+
       <div className="p-6">
-        <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-1">{property.title}</h3>
-        
+        <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-1">
+          {property.title}
+        </h3>
+
         <div className="flex items-center text-gray-600 mb-3">
           <MapPinIcon className="h-4 w-4 mr-1" />
           <span className="text-sm">{property.location}</span>
         </div>
-        
+
         <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
           <div className="flex items-center">
             <HomeIcon className="h-4 w-4 mr-1" />
@@ -56,7 +61,7 @@ const PropertyCard = ({ property }) => {
             <span>{property.area} sq ft</span>
           </div>
         </div>
-        
+
         <Link
           to={`/property/${property.id}`}
           className="w-full bg-primary-600 text-white py-2.5 px-4 rounded-lg hover:bg-primary-700 transition-colors duration-200 text-center font-medium block"

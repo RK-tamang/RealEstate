@@ -1,34 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { FaInstagram, FaTwitter, FaFacebookF } from 'react-icons/fa';
-import { FiChevronDown } from 'react-icons/fi';
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { FaInstagram, FaTwitter, FaFacebookF } from "react-icons/fa";
+import { FiChevronDown } from "react-icons/fi";
 
 const Navbar = () => {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
 
-  const isPropertyDetailPage = location.pathname.startsWith('/property/');
+  const isPropertyDetailPage = location.pathname.startsWith("/property/");
 
   // Background: charcoal gray on scroll everywhere,
   // otherwise white for property detail page, transparent elsewhere
   const bgClass = scrolled
-    ? 'bg-gray-900/95 backdrop-blur-md shadow-md'
+    ? "bg-gray-900/95 backdrop-blur-md shadow-md"
     : isPropertyDetailPage
-    ? 'bg-white shadow-md'
-    : 'bg-transparent';
+      ? "bg-white shadow-md"
+      : "bg-transparent";
 
   // Text color: white on scroll everywhere,
   // black by default on property detail page, white elsewhere
-  const textClass = scrolled ? 'text-white' : isPropertyDetailPage ? 'text-black' : 'text-white';
+  const textClass = scrolled
+    ? "text-white"
+    : isPropertyDetailPage
+      ? "text-black"
+      : "text-white";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <nav className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${bgClass} ${textClass}`}>
+    <nav
+      className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${bgClass} ${textClass}`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo and Brand */}

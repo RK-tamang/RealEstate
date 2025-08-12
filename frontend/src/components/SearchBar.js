@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const SearchBar = () => {
   const [searchData, setSearchData] = useState({
-    location: '',
-    type: '',
-    priceRange: '',
+    location: "",
+    type: "",
+    priceRange: "",
   });
 
   const handleChange = (e) => {
@@ -17,14 +17,16 @@ const SearchBar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle search functionality
-    console.log('Searching for:', searchData);
+    console.log("Searching for:", searchData);
   };
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-lg">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Location</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Location
+          </label>
           <input
             type="text"
             name="location"
@@ -34,9 +36,11 @@ const SearchBar = () => {
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
           />
         </div>
-        
+
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Property Type</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Property Type
+          </label>
           <select
             name="type"
             value={searchData.type}
@@ -51,9 +55,11 @@ const SearchBar = () => {
             <option value="Condo">Condo</option>
           </select>
         </div>
-        
+
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Price Range</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Price Range
+          </label>
           <select
             name="priceRange"
             value={searchData.priceRange}
@@ -68,7 +74,7 @@ const SearchBar = () => {
             <option value="1000000+">Above $1M</option>
           </select>
         </div>
-        
+
         <div className="flex items-end">
           <button
             type="submit"
