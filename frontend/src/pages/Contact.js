@@ -18,9 +18,36 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+    
+    // Create message object with timestamp
+    const newMessage = {
+      id: Date.now(),
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      subject: formData.subject,
+      message: formData.message,
+      date: new Date().toLocaleString(),
+      read: false
+    };
+
+    // Get existing messages from localStorage
+    const existingMessages = JSON.parse(localStorage.getItem('contactMessages')) || [];
+    
+    // Add new message
+    existingMessages.push(newMessage);
+    
+    // Save back to localStorage
+    localStorage.setItem('contactMessages', JSON.stringify(existingMessages));
+    
     alert("Thank you for your message! We will get back to you soon.");
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
+    });
   };
 
   return (
